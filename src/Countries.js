@@ -5,6 +5,7 @@ import SingleCountry from "./SingleCountry";
 const Countries = () => {
   const [showCountry, setShowCountry] = useState({ value: "" });
 
+
   function handleInput(e) {
     return setShowCountry({
       value: e.currentTarget.value,
@@ -17,7 +18,7 @@ const Countries = () => {
         <h3>Where in The world?</h3>
       </header>
       <div className="all-countries-container">
-        <div className="form-container">
+        <div className="search-container">
           <form>
             <input
               type="text"
@@ -26,6 +27,14 @@ const Countries = () => {
               onChange={handleInput}
             ></input>
           </form>
+          <select name="regions" id="regions">
+            <option value="" disabled selected hidden>Filter by Region</option>
+            <option value="Africa">Africa</option>
+            <option value="America">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+          </select>
         </div>
         <div className="country-cards">
           {showCountry.value.length === 0
