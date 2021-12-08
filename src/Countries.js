@@ -3,13 +3,24 @@ import React, { useState } from "react";
 import SingleCountry from "./SingleCountry";
 
 const Countries = () => {
-  const [showCountry, setShowCountry] = useState({ value: "" });
-
+  const [textInput, setTextInput] = useState({ value: "" });
+  const [allCountries, setAllCountries] = useState(data);
 
   function handleInput(e) {
-    return setShowCountry({
-      value: e.currentTarget.value,
-    });
+    return setTextInput({ value: e.target.value });
+  }
+
+  function selectHandler(e) {
+    let regionName = e.target.value;
+    // console.log(e.target.value);
+    let countryData = data;
+    if (regionName === "filter") {
+      setAllCountries(countryData);
+    } else {
+      let regionArray = countryData.filter(
+        (country) => country.region === regionName);
+      setAllCountries(regionArray);
+    }
   }
 
   return (
@@ -23,41 +34,44 @@ const Countries = () => {
             <input
               type="text"
               placeholder="Search for a country..."
-              value={showCountry.value}
               onChange={handleInput}
             ></input>
           </form>
-          <select name="regions" id="regions">
-            <option value="" disabled selected hidden>Filter by Region</option>
+          <select name="regions" id="regions" onChange={selectHandler}>
+            <option value="filter" selected>
+              Filter by Region
+            </option>
             <option value="Africa">Africa</option>
-            <option value="America">America</option>
+            <option value="Americas">Americas</option>
             <option value="Asia">Asia</option>
             <option value="Europe">Europe</option>
             <option value="Oceania">Oceania</option>
           </select>
         </div>
         <div className="country-cards">
-          {showCountry.value.length === 0
-            ? data.map((country) => {
-                return <SingleCountry
-                  src={country.flag}
-                  name={country.name}
-                  population={country.population}
-                  region={country.region}
-                  capital={country.capital}
-                />;
+          {textInput.value.length === 0
+            ? allCountries.map((country) => {
+                return (
+                  <SingleCountry
+                    src={country.flag}
+                    name={country.name}
+                    population={country.population}
+                    region={country.region}
+                    capital={country.capital}
+                  />
+                );
               })
-            : showCountry.value.length !== 0
-            ? data.map((country) => {
-                const inputted = showCountry.value.toLowerCase();
+            : textInput.value.length !== 0
+            ? allCountries.map((country) => {
+                const inputted = textInput.value.toLowerCase();
                 return country.name.toLowerCase().includes(inputted) ? (
-                  <div className="card">
-                    <img src={country.flag} alt="" />
-                    <h4>{country.name}</h4>
-                    <h5>Population: {country.population}</h5>
-                    <h5>Region: {country.region}</h5>
-                    <h5>Capital: {country.capital}</h5>
-                  </div>
+                  <SingleCountry
+                    src={country.flag}
+                    name={country.name}
+                    population={country.population}
+                    region={country.region}
+                    capital={country.capital}
+                  />
                 ) : null;
               })
             : null}
