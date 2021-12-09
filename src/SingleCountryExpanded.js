@@ -3,6 +3,9 @@ const SingleCountryExpanded = (props) => {
     <div>
       {props.nation.map((element) => (
         <div className="card2">
+          <div className="back-button">
+            <button onClick={props.reset}>Back</button>
+          </div>
           <div className="flag-container">
             <img src={element.flag} alt={element.name} />
           </div>
@@ -27,9 +30,6 @@ const SingleCountryExpanded = (props) => {
             <div className="bordering">
               <h5>Bordering Countries: </h5>
             </div>
-          </div>
-          <div className="back-button">
-            <button onClick={props.reset}>Back</button>
           </div>
         </div>
       ))}

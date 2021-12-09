@@ -59,6 +59,7 @@ img {
 
 .card2 {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .flag-container {
@@ -92,5 +93,12 @@ img {
 }
 
 .back-button {
-  margin-top: 30px;
+  width: 100%;
+  margin: 2rem 0rem;
+  text-align: left;
+}
+
+button {
+  width: 100px;
+  height: 30px;
 }
