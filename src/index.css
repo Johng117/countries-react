@@ -1,6 +1,11 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
 .header {
   height: 4rem;
-  width: 100%;
+  max-width: 1050px;
 }
 
 .all-countries-container {
@@ -9,6 +14,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   background-color: hsl(0, 0%, 98%);
+  max-width: 1050px;
 }
 
 .search-container {
@@ -90,6 +96,8 @@ img {
   width: 95%;
   margin-left: 5%;
   text-align: start;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .back-button {

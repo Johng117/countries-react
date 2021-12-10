@@ -30,7 +30,12 @@ const Countries = () => {
     let selectedCountry = allCountries.filter(
       (country) => country.name === name,
     );
-    setOneNation(selectedCountry);
+    let bordering = selectedCountry.concat(
+      selectedCountry[0].borders.map((border) => {
+        return allCountries.filter((element) => element.alpha3Code === border);
+      }),
+    );
+    setOneNation(bordering.flat());
     setCountryInfo(!countryInfo);
   }
 
@@ -39,6 +44,9 @@ const Countries = () => {
     setOneNation([]);
   }
 
+  function goToBorder(name) {
+    oneCountry(name);
+  }
   return (
     <div>
       <header className="header">
@@ -98,7 +106,12 @@ const Countries = () => {
               })
             ) : null
           ) : (
-            <SingleCountryExpanded nation={oneNation} reset={reset} />
+            <SingleCountryExpanded
+              nation={oneNation}
+              reset={reset}
+              info={setCountryInfo}
+              getBorder={goToBorder}
+            />
           )}
         </div>
       </div>
