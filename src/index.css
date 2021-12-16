@@ -1,6 +1,7 @@
 body {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .header {
@@ -12,6 +13,7 @@ body {
   padding: 2rem 4rem 4rem 4rem;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   background-color: hsl(0, 0%, 98%);
   max-width: 1050px;
@@ -98,6 +100,13 @@ img {
   text-align: start;
   display: flex;
   justify-content: flex-start;
+  gap: 10px;
+}
+
+.languages p,
+.languages h5 {
+  margin-right: 20px;
+  align-self: center;
 }
 
 .back-button {
@@ -106,7 +115,32 @@ img {
   text-align: left;
 }
 
+.b-button {
+  width: 70px;
+}
+
+.border-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
 button {
-  width: 100px;
+  width: auto;
   height: 30px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .search-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 16px;
+    justify-content: space-between;
+  }
+
+  input {
+    width: 220px;
+  }
 }

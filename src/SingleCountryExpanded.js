@@ -5,13 +5,14 @@ const SingleCountryExpanded = (props) => {
     return element;
   });
   const borderList = nationAndBorders.slice(1);
-  console.log(borderList);
 
   return (
     <div>
       <div className="card2">
         <div className="back-button">
-          <button onClick={props.reset}>Back</button>
+          <button onClick={props.reset} className="b-button">
+            Back
+          </button>
         </div>
         <div className="flag-container">
           <img src={nationAndBorders[0].flag} alt={nationAndBorders[0].name} />
@@ -39,18 +40,20 @@ const SingleCountryExpanded = (props) => {
           </div>
           <div className="bordering">
             <h5>Bordering Countries: </h5>
-            {borderList.map((country) => {
-              return (
-                <button
-                  onClick={() => {
-                    props.getBorder(country.name);
-                    props.info(false);
-                  }}
-                >
-                  {country.name}
-                </button>
-              );
-            })}
+            <div className="border-panel">
+              {borderList.map((country) => {
+                return (
+                  <button
+                    onClick={() => {
+                      props.getBorder(country.name);
+                      props.info(false);
+                    }}
+                  >
+                    {country.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

@@ -8,6 +8,13 @@ const Countries = () => {
   const [allCountries, setAllCountries] = useState(data);
   const [countryInfo, setCountryInfo] = useState(true);
   const [oneNation, setOneNation] = useState([]);
+  // const [buttonOn, setButtonOn] = useState(false);
+
+  // function home() {
+  //   setTextInput({ value: "" });
+  //   setButtonOn(!buttonOn);
+  //   setAllCountries(data);
+  // }
 
   function handleInput(e) {
     return setTextInput({ value: e.target.value });
@@ -35,11 +42,15 @@ const Countries = () => {
         return allCountries.filter((element) => element.alpha3Code === border);
       }),
     );
+
     setOneNation(bordering.flat());
     setCountryInfo(!countryInfo);
   }
 
   function reset() {
+    setAllCountries(data);
+    setTextInput({ value: "" });
+    // setButtonOn(!buttonOn);
     setCountryInfo(!countryInfo);
     setOneNation([]);
   }
@@ -62,6 +73,7 @@ const Countries = () => {
                 onChange={handleInput}
               ></input>
             </form>
+            {/* <div>{buttonOn ? <button onClick={home}>back</button> : null}</div> */}
             <select name="regions" id="regions" onChange={selectHandler}>
               <option value="filter" selected>
                 Filter by Region
@@ -74,6 +86,7 @@ const Countries = () => {
             </select>
           </div>
         ) : null}
+
         <div className="country-cards">
           {countryInfo ? (
             textInput.value.length === 0 ? (
