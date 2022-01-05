@@ -1,4 +1,5 @@
 // import { useState } from "react";
+// component to render expanded information of a country
 
 const SingleCountryExpanded = (props) => {
   const nationAndBorders = props.nation.map((element) => {

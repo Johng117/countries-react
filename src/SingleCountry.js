@@ -1,5 +1,7 @@
 import React from "react";
 
+// component to render a single country card
+
 const SingleCountry = (props) => {
   return (
     <div className="card" onClick={()=>props.countryClick(props.name)} key={props.alpha3code}>
